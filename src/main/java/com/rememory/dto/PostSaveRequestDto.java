@@ -5,7 +5,6 @@ import com.rememory.domain.post.Category;
 import com.rememory.domain.post.Post;
 import com.rememory.domain.user.User;
 import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.validation.constraints.NotBlank;
 

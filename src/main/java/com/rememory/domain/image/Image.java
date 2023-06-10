@@ -3,6 +3,7 @@ package com.rememory.domain.image;
 import com.rememory.domain.user.User;
 import com.rememory.global.BaseTimeEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "image")
 public class Image extends BaseTimeEntity {
