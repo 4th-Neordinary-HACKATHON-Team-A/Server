@@ -31,4 +31,17 @@ public class GptController {
 
         return result;
     }
+
+    @PostMapping("/prompt")
+    public CompletableFuture<CompletionResult> promptToGpt(@RequestBody GptReqVo gptReqVo) throws Exception {
+        String strQuestion =  "\"" + gptReqVo.getSentence() + "\"" +
+                "\n\n 위 문장을 영어로 번역해줘.";
+        System.out.println("프롬프트 확인: " + strQuestion);
+
+        CompletableFuture<CompletionResult> result =
+                gptService.getGptResponse(strQuestion);
+        System.out.println("Generate an image of \"" + result.get().getChoices().get(0).getText().replaceAll("\n", "") + "\"");
+
+        return result;
+    }
 }
