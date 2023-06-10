@@ -1,7 +1,7 @@
 package com.rememory.controller;
 
-import com.rememory.dto.UserSaveRequestDto;
-import com.rememory.service.UserService;
+import com.rememory.dto.CommentSaveRequestDto;
+import com.rememory.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,12 +13,13 @@ import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/rememory/user")
-public class UserApiController {
-    private final UserService userService;
+@RequestMapping("/rememory/comment")
+public class CommentApiController {
+    private final CommentService commentService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody @Valid UserSaveRequestDto requestDto){
-        userService.save(requestDto);
+    public ResponseEntity<Void> create(@RequestBody @Valid CommentSaveRequestDto requestDto){
+        commentService.save(requestDto);
+        return ResponseEntity.ok().build();
     }
 }
