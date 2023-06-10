@@ -2,6 +2,7 @@ package com.rememory.domain.post;
 
 import com.rememory.domain.image.Image;
 import com.rememory.domain.user.User;
+import com.rememory.global.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +18,7 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "post")
-public class Post {
+public class Post extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
