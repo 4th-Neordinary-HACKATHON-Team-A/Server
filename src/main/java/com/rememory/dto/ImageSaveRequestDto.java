@@ -8,13 +8,10 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommentSaveRequestDto {
-    @NotBlank(message = "내용을 작성해주세요")
-    private String text;
+public class ImageSaveRequestDto {
+    @NotBlank(message = "이미지 URL을 작성해주세요.")
+    private String imageSrc;
 
     @NotBlank(message = "작성자를 작성해주세요.")
     private Long userId;
-
-    @NotBlank(message = "게시글을 작성해주세요.")
-    private Long postId;
 }
