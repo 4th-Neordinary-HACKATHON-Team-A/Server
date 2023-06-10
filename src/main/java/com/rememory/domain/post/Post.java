@@ -1,5 +1,6 @@
 package com.rememory.domain.post;
 
+import com.rememory.domain.category.Category;
 import com.rememory.domain.image.Image;
 import com.rememory.domain.user.User;
 import com.rememory.global.BaseTimeEntity;
@@ -30,7 +31,7 @@ public class Post extends BaseTimeEntity {
     @Column(nullable = false)
     private String content;
 
-    @Enumerated(EnumType.STRING)
+    @OneToOne
     private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY)
