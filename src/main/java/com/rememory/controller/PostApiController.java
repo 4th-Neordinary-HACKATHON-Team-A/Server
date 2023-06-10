@@ -1,11 +1,4 @@
 package com.rememory.controller;
-
-import com.rememory.dto.PostSaveRequestDto;
-import com.rememory.service.PostService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
