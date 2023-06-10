@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserRepository userRepository;
 
-    @Transactional
+
     public void userSave(UserSaveRequestDto requestDto) {
         userRepository.save(requestDto.toEntity());
     }

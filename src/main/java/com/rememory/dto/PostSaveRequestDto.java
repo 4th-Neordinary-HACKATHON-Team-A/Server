@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @Builder
@@ -14,9 +15,11 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class PostSaveRequestDto {
     @NotBlank(message = "제목을 작성해주세요.")
+    @Size(max = 45)
     private String title;
 
     @NotBlank(message = "내용을 작성해주세요.")
+    @Size(max = 200)
     private String content;
 
     @NotNull(message = "카테고리를 선택해주세요.")

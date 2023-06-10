@@ -22,11 +22,11 @@ public class ImageService {
         User user = this.userRepository.findById(requestDto.getUserId())
                                        .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
-        imageRepository.save(
+        this.imageRepository.save(
                 Image.builder()
-                     .imageSrc(requestDto.getImageSrc())
-                     .user(user)
-                     .build()
+                        .imageSrc(requestDto.getImageSrc())
+                        .user(user)
+                        .build()
         );
     }
 }

@@ -31,7 +31,8 @@ public class PostService {
     private final CategoryRepository categoryRepository;
 
     @Transactional
-    public void savePost(PostSaveRequestDto requestDto) {
+    public void savePost(PostSaveRequestDto requestDto){
+
         User user = this.userRepository.findById(requestDto.getUserId())
                                        .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
@@ -48,6 +49,7 @@ public class PostService {
                     .user(user)
                     .image(image)
                     .build()
+
         );
     }
 
@@ -76,12 +78,12 @@ public class PostService {
         Post post = this.postRepository.findById(requestDto.getPostId())
                                        .orElseThrow(() -> new CustomException(ErrorCode.POST_NOT_FOUND));
 
-        commentRepository.save(
+        this.commentRepository.save(
                 Comment.builder()
-                       .text(requestDto.getText())
-                       .user(user)
-                       .post(post)
-                       .build()
+                        .text(requestDto.getText())
+                        .user(user)
+                        .post(post)
+                        .build()
         );
     }
 }
