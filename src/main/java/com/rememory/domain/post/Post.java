@@ -1,5 +1,6 @@
 package com.rememory.domain.post;
 
+import com.rememory.domain.image.Image;
 import com.rememory.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,4 +34,8 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id")
+    private Image image;
 }
