@@ -38,10 +38,4 @@ public class PostApiController {
         this.postService.saveComment(requestDto);
         return ResponseEntity.ok().build();
     }
-
-    @GetMapping("/rememory/index/:categoryId")
-    public List<PostResponseDto> getPostList(@PathVariable Long categoryId){
-        return postService.findByCategory(categoryId);
-    }
-
 }
