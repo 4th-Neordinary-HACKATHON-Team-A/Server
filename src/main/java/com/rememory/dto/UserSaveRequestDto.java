@@ -7,7 +7,6 @@ import org.hibernate.validator.constraints.UniqueElements;
 import javax.validation.constraints.NotBlank;
 
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

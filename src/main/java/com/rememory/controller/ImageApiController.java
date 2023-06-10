@@ -1,7 +1,7 @@
 package com.rememory.controller;
 
-import com.rememory.dto.UserSaveRequestDto;
-import com.rememory.service.UserService;
+import com.rememory.dto.ImageSaveRequestDto;
+import com.rememory.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,13 +13,13 @@ import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/rememory/user")
-public class UserApiController {
-    private final UserService userService;
+@RequestMapping("/rememory/image")
+public class ImageApiController {
+    private final ImageService imageService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody @Valid UserSaveRequestDto requestDto){
-        userService.save(requestDto);
+    public ResponseEntity<Void> create(@RequestBody @Valid ImageSaveRequestDto requestDto){
+        imageService.save(requestDto);
         return ResponseEntity.ok().build();
     }
 }
