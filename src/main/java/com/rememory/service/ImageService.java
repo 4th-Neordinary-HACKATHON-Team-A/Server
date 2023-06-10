@@ -18,15 +18,15 @@ public class ImageService {
     private final ImageRepository imageRepository;
 
     @Transactional
-    public void imageSave(ImageSaveRequestDto requestDto) {
+    public Long imageSave(ImageSaveRequestDto requestDto) {
         User user = this.userRepository.findById(requestDto.getUserId())
                                        .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
-        this.imageRepository.save(
+        return this.imageRepository.save(
                 Image.builder()
-                        .imageSrc(requestDto.getImageSrc())
-                        .user(user)
-                        .build()
-        );
+                     .imageSrc(requestDto.getImageSrc())
+                     .user(user)
+                     .build()
+        ).getId();
     }
 }

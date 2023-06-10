@@ -1,6 +1,6 @@
 package com.rememory.controller;
 
-import com.rememory.dto.MainDto.*;
+import com.rememory.dto.MainDto.MainRequestDto;
 import com.rememory.dto.PostResponseDto;
 import com.rememory.service.MainService;
 import com.rememory.service.PostService;
@@ -25,8 +25,8 @@ public class MainController {
         return mainService.getMainPage();
     }
 
-    @GetMapping("/rememory/index/:categoryId")
-    public List<PostResponseDto> getPostList(@PathVariable Long categoryId){
+    @GetMapping("/index/:categoryId")
+    public List<PostResponseDto> getPostList(@PathVariable Long categoryId) {
         return postService.findByCategory(categoryId);
     }
 }
