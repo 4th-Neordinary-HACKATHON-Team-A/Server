@@ -27,3 +27,4 @@ public class DalleDto {
         private String url;
     }
 }
+
