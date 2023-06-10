@@ -6,10 +6,10 @@ import com.rememory.domain.post.Post;
 import com.rememory.domain.user.User;
 import lombok.*;
 
+
 import javax.validation.constraints.NotBlank;
 
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,11 +31,11 @@ public class PostSaveRequestDto {
 
     public Post toEntity() {
         return Post.builder()
-                .title(title)
-                .content(content)
-                .category(category)
-                .user(user)
-                .image(image)
-                .build();
+                   .title(title)
+                   .content(content)
+                   .category(category)
+                   .user(user)
+                   .image(image)
+                   .build();
     }
 }

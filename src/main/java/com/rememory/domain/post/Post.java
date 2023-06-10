@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -39,4 +40,13 @@ public class Post extends BaseTimeEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "image_id")
     private Image image;
+
+    @Column(name = "like_count")
+    @ColumnDefault("0")
+    private int likeCount;
+
+    public void increaseLike() {
+        this.likeCount += 1;
+
+    }
 }
