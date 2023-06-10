@@ -18,7 +18,6 @@ import com.rememory.dto.PostSaveRequestDto;
 import com.rememory.exception.CustomException;
 import com.rememory.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,7 +35,7 @@ public class PostService {
     private final CategoryRepository categoryRepository;
 
     @Transactional
-    public void savePost(PostSaveRequestDto requestDto){
+    public void savePost(PostSaveRequestDto requestDto) {
 
         User user = this.userRepository.findById(requestDto.getUserId())
                                        .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
@@ -59,13 +58,13 @@ public class PostService {
     }
 
     @Transactional
-    public List<PostResponseDto> findByCategory(Long categoryId){
+    public List<PostResponseDto> findByCategory(Long categoryId) {
         Category category = this.categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new CustomException(ErrorCode.CATEGORY_NOT_FOUND));
+                                                   .orElseThrow(() -> new CustomException(ErrorCode.CATEGORY_NOT_FOUND));
 
         return postRepository.findByCategory(category).stream()
-                .map(PostResponseDto::new)
-                .collect(Collectors.toList());
+                             .map(PostResponseDto::new)
+                             .collect(Collectors.toList());
     }
 
     @Transactional
@@ -81,6 +80,8 @@ public class PostService {
         this.likeRepository.save(
                 Like.builder()
                     .isLiked(true)
+                    .user(user)
+                    .post(post)
                     .build()
         );
     }
@@ -95,10 +96,10 @@ public class PostService {
 
         this.commentRepository.save(
                 Comment.builder()
-                        .text(requestDto.getText())
-                        .user(user)
-                        .post(post)
-                        .build()
+                       .text(requestDto.getText())
+                       .user(user)
+                       .post(post)
+                       .build()
         );
     }
 }
