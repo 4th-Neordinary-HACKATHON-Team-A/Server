@@ -1,21 +1,12 @@
 package com.rememory.controller;
-
+import com.rememory.dto.CommentSaveRequestDto;
 import com.rememory.dto.PostSaveRequestDto;
-
 import com.rememory.service.PostService;
-
-import com.rememory.dto.UserSaveRequestDto;
-import com.rememory.service.PostService;
-import com.rememory.service.UserService;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
-import java.net.URI;
-
 
 @RequiredArgsConstructor
 @RestController
@@ -24,8 +15,23 @@ public class PostApiController {
     private final PostService postService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody @Valid PostSaveRequestDto requestDto){
-        postService.save(requestDto);
+    public ResponseEntity<Void> createPost(@RequestBody @Valid PostSaveRequestDto requestDto){
+        postService.savePost(requestDto);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{postId}/{userId}/like")
+    public ResponseEntity<Void> registerLike(
+            @PathVariable(name = "postId") Long postId,
+            @PathVariable(name = "userId") Long userId
+    ) {
+        this.postService.registerLike(postId, userId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/comment")
+    public ResponseEntity<Void> createComment(@RequestBody @Valid CommentSaveRequestDto requestDto){
+        postService.saveComment(requestDto);
         return ResponseEntity.ok().build();
     }
 }
