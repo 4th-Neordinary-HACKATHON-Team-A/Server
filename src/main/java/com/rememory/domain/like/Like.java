@@ -1,8 +1,8 @@
-package com.rememory.domain.image;
+package com.rememory.domain.like;
 
 import com.rememory.domain.user.User;
-import com.rememory.global.BaseTimeEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,10 +11,11 @@ import javax.persistence.*;
 
 @Slf4j
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Image extends BaseTimeEntity {
+public class Like {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +24,9 @@ public class Image extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Post post;
+
     @Column(nullable = false)
-    private String imageSrc;
+    private boolean isLiked;
 }
