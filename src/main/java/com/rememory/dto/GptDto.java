@@ -1,5 +1,6 @@
 package com.rememory.dto;
 
+import com.theokanning.openai.completion.CompletionChoice;
 import com.theokanning.openai.completion.CompletionResult;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +16,7 @@ public class GptDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class GptImageResponseDto {
-        private CompletableFuture<CompletionResult> completableResult;
-        private String url;
+        private CompletionChoice choice;
+        private String imageUrl;
     }
 }
