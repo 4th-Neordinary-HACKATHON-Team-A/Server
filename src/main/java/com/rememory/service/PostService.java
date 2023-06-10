@@ -60,7 +60,6 @@ public class PostService {
                         .build()
         );
     }
-
     @Transactional
     public Long saveComment(CommentSaveRequestDto requestDto){
         User user = this.userRepository.findById(requestDto.getUserId())
