@@ -25,7 +25,7 @@ public class MainController {
         return mainService.getMainPage();
     }
 
-    @GetMapping("/index/:categoryId")
+    @GetMapping("/index/{categoryId}")
     public List<PostResponseDto> getPostList(@PathVariable Long categoryId) {
         return postService.findByCategory(categoryId);
     }
