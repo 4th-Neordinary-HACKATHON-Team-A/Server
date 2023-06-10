@@ -1,6 +1,5 @@
-package com.rememory.domain.like;
+package com.rememory.domain.post;
 
-import com.rememory.domain.post.Post;
 import com.rememory.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,22 +11,26 @@ import javax.persistence.*;
 
 @Slf4j
 @Getter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-public class Like {
-
+@Table(name = "post")
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Post post;
+    @Column(nullable = false)
+    private String title;
 
     @Column(nullable = false)
-    private boolean isLiked;
+    private String content;
+
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 }
