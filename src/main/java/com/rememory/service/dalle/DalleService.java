@@ -12,7 +12,7 @@ import java.time.Duration;
 @Service
 public class DalleService {
 
-    @Value("${spring.api-key}")
+    @Value("${openai.dalle-api-key}")
     private String apiKey;
 
     public ImageResult getDalleResponse(DalleRequestDto request) throws Exception {
