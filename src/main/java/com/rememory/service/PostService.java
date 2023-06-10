@@ -13,12 +13,17 @@ import com.rememory.domain.post.PostRepository;
 import com.rememory.domain.user.User;
 import com.rememory.domain.user.UserRepository;
 import com.rememory.dto.CommentSaveRequestDto;
+import com.rememory.dto.PostResponseDto;
 import com.rememory.dto.PostSaveRequestDto;
 import com.rememory.exception.CustomException;
 import com.rememory.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -51,6 +56,16 @@ public class PostService {
                     .build()
 
         );
+    }
+
+    @Transactional
+    public List<PostResponseDto> findByCategory(Long categoryId){
+        Category category = this.categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new CustomException(ErrorCode.CATEGORY_NOT_FOUND));
+
+        return postRepository.findByCategory(category).stream()
+                .map(PostResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     @Transactional

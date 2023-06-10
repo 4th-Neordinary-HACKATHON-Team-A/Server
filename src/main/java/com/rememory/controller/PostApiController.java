@@ -1,6 +1,8 @@
 package com.rememory.controller;
 
+import com.rememory.domain.post.Post;
 import com.rememory.dto.CommentSaveRequestDto;
+import com.rememory.dto.PostResponseDto;
 import com.rememory.dto.PostSaveRequestDto;
 import com.rememory.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -35,4 +38,10 @@ public class PostApiController {
         this.postService.saveComment(requestDto);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/rememory/index/:categoryId")
+    public List<PostResponseDto> getPostList(@PathVariable Long categoryId){
+        return postService.findByCategory(categoryId);
+    }
+
 }
