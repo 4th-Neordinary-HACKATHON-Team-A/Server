@@ -1,9 +1,12 @@
 package com.rememory.dto;
 
-import com.rememory.domain.post.Category;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Builder
@@ -16,12 +19,12 @@ public class PostSaveRequestDto {
     @NotBlank(message = "내용을 작성해주세요.")
     private String content;
 
-    @NotBlank(message = "카테고리를 선택해주세요.")
-    private Category category;
+    @NotNull(message = "카테고리를 선택해주세요.")
+    private Long categoryId;
 
-    @NotBlank(message = "작성자를 작성해주세요.")
+    @NotNull(message = "작성자를 작성해주세요.")
     private Long userId;
 
-    @NotBlank(message = "이미지를 작성해주세요.")
+    @NotNull(message = "이미지를 작성해주세요.")
     private Long imageId;
 }
