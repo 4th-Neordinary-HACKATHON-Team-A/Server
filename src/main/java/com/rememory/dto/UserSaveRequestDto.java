@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Getter
 @Builder
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class UserSaveRequestDto {
     @NotBlank(message = "닉네임을 작성해주세요")
+    @Size(min = 1, max = 255)
     private String nickname;
 
     public User toEntity() {
