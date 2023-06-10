@@ -1,6 +1,7 @@
 package com.rememory.domain.user;
 
 import com.rememory.global.BaseTimeEntity;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,8 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "users")
 public class User extends BaseTimeEntity {
@@ -21,12 +24,5 @@ public class User extends BaseTimeEntity {
 
     @Column(nullable = false)
     private String nickname;
-
-    @Builder
-    public User(String name, String nickname) {
-        this.name = name;
-        this.nickname = nickname;
-    }
-
 }
 
