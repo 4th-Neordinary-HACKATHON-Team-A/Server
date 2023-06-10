@@ -4,10 +4,8 @@ import com.rememory.domain.image.Image;
 import com.rememory.domain.post.Category;
 import com.rememory.domain.post.Post;
 import com.rememory.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 
 import javax.validation.constraints.NotBlank;
 

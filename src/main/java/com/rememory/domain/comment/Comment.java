@@ -4,6 +4,7 @@ import com.rememory.domain.post.Post;
 import com.rememory.domain.user.User;
 import com.rememory.global.BaseTimeEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "comment")
 public class Comment extends BaseTimeEntity {
