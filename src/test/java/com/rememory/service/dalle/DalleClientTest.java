@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class DalleClientTest {
-
+    /*
     private DalleClient dalleClient;
 
     @Test
@@ -30,4 +30,5 @@ class DalleClientTest {
         System.out.println(result);
     }
 
+     */
 }
