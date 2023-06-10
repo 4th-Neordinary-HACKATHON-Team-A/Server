@@ -18,8 +18,8 @@ public class UserApiController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody @Valid UserSaveRequestDto requestDto){
-        userService.save(requestDto);
+    public ResponseEntity<Void> create(@RequestBody @Valid UserSaveRequestDto requestDto) {
+        this.userService.userSave(requestDto);
         return ResponseEntity.ok().build();
     }
 }

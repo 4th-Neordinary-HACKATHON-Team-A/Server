@@ -15,7 +15,7 @@ public class DalleDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class DalleRequestDto {
-        @NotBlank
+        @NotBlank(message = "명령어를 입력해주세요")
         private String prompt;
     }
 

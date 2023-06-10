@@ -1,4 +1,5 @@
 package com.rememory.controller;
+
 import com.rememory.dto.CommentSaveRequestDto;
 import com.rememory.dto.PostSaveRequestDto;
 import com.rememory.service.PostService;
@@ -15,8 +16,8 @@ public class PostApiController {
     private final PostService postService;
 
     @PostMapping
-    public ResponseEntity<Void> createPost(@RequestBody @Valid PostSaveRequestDto requestDto){
-        postService.savePost(requestDto);
+    public ResponseEntity<Void> createPost(@RequestBody @Valid PostSaveRequestDto requestDto) {
+        this.postService.savePost(requestDto);
         return ResponseEntity.ok().build();
     }
 
@@ -30,8 +31,8 @@ public class PostApiController {
     }
 
     @PostMapping("/comment")
-    public ResponseEntity<Void> createComment(@RequestBody @Valid CommentSaveRequestDto requestDto){
-        postService.saveComment(requestDto);
+    public ResponseEntity<Void> createComment(@RequestBody @Valid CommentSaveRequestDto requestDto) {
+        this.postService.saveComment(requestDto);
         return ResponseEntity.ok().build();
     }
 }

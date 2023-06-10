@@ -18,8 +18,8 @@ public class ImageApiController {
     private final ImageService imageService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody @Valid ImageSaveRequestDto requestDto){
-        imageService.save(requestDto);
+    public ResponseEntity<Void> create(@RequestBody @Valid ImageSaveRequestDto requestDto) {
+        imageService.imageSave(requestDto);
         return ResponseEntity.ok().build();
     }
 }
