@@ -5,13 +5,15 @@ import com.rememory.global.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 
-@Entity
+@Slf4j
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Image extends BaseTimeEntity {
 
     @Id
