@@ -16,15 +16,15 @@ public class ImageService {
     private final ImageRepository imageRepository;
 
     @Transactional
-    public Long save(ImageSaveRequestDto requestDto){
+    public void save(ImageSaveRequestDto requestDto){
         User user = this.userRepository.findById(requestDto.getUserId())
                 .orElseThrow(() -> new RuntimeException("유저 정보가 존재하지 않습니다."));
 
-        return imageRepository.save(
+        this.imageRepository.save(
                 Image.builder()
                         .imageSrc(requestDto.getImageSrc())
                         .user(user)
                         .build()
-        ).getId();
+        );
     }
 }

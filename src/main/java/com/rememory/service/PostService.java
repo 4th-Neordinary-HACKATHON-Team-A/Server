@@ -26,14 +26,14 @@ public class PostService {
     private final CommentRepository commentRepository;
 
     @Transactional
-    public Long savePost(PostSaveRequestDto requestDto){
+    public void savePost(PostSaveRequestDto requestDto){
         User user = this.userRepository.findById(requestDto.getUserId())
                 .orElseThrow(() -> new RuntimeException("유저 정보가 존재하지 않습니다."));
 
         Image image = this.imageRepository.findById(requestDto.getImageId())
                 .orElseThrow(() -> new RuntimeException("이미지 정보가 존재하지 않습니다."));
 
-        return this.postRepository.save(
+        this.postRepository.save(
                 Post.builder()
                         .title(requestDto.getTitle())
                         .content(requestDto.getContent())
@@ -41,7 +41,7 @@ public class PostService {
                         .user(user)
                         .image(image)
                         .build()
-        ).getId();
+        );
     }
 
     @Transactional
@@ -61,19 +61,19 @@ public class PostService {
         );
     }
     @Transactional
-    public Long saveComment(CommentSaveRequestDto requestDto){
+    public void saveComment(CommentSaveRequestDto requestDto){
         User user = this.userRepository.findById(requestDto.getUserId())
                 .orElseThrow(() -> new RuntimeException("유저 정보가 존재하지 않습니다."));
 
         Post post = this.postRepository.findById(requestDto.getPostId())
                 .orElseThrow(() -> new RuntimeException("게시글 정보가 존재하지 않습니다."));
 
-        return commentRepository.save(
+        this.commentRepository.save(
                 Comment.builder()
                         .text(requestDto.getText())
                         .user(user)
                         .post(post)
                         .build()
-        ).getId();
+        );
     }
 }

@@ -13,7 +13,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public Long save(UserSaveRequestDto requestDto){
-        return userRepository.save(requestDto.toEntity()).getId();
+    public void save(UserSaveRequestDto requestDto){
+        userRepository.save(requestDto.toEntity());
     }
 }
