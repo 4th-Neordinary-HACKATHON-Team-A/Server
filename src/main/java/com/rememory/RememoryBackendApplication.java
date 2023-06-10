@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RememoryBackendApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RememoryBackendApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RememoryBackendApplication.class, args);
+    }
 
 }
