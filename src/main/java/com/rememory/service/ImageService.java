@@ -5,6 +5,8 @@ import com.rememory.domain.image.ImageRepository;
 import com.rememory.domain.user.User;
 import com.rememory.domain.user.UserRepository;
 import com.rememory.dto.ImageSaveRequestDto;
+import com.rememory.exception.CustomException;
+import com.rememory.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,15 +18,15 @@ public class ImageService {
     private final ImageRepository imageRepository;
 
     @Transactional
-    public Long save(ImageSaveRequestDto requestDto){
+    public void imageSave(ImageSaveRequestDto requestDto) {
         User user = this.userRepository.findById(requestDto.getUserId())
-                .orElseThrow(() -> new RuntimeException("유저 정보가 존재하지 않습니다."));
+                                       .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
-        return imageRepository.save(
+        imageRepository.save(
                 Image.builder()
-                        .imageSrc(requestDto.getImageSrc())
-                        .user(user)
-                        .build()
-        ).getId();
+                     .imageSrc(requestDto.getImageSrc())
+                     .user(user)
+                     .build()
+        );
     }
 }
